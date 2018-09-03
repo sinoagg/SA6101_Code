@@ -3,7 +3,7 @@ transistor tester v1.02\usb_device.o: ../Inc/usb_device.h
 transistor tester v1.02\usb_device.o: ../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f1xx.h
 transistor tester v1.02\usb_device.o: ../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xe.h
 transistor tester v1.02\usb_device.o: ../Drivers/CMSIS/Include/core_cm3.h
-transistor tester v1.02\usb_device.o: E:\software\MDK\ARM\ARMCC\bin\..\include\stdint.h
+transistor tester v1.02\usb_device.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 transistor tester v1.02\usb_device.o: ../Drivers/CMSIS/Include/core_cmInstr.h
 transistor tester v1.02\usb_device.o: ../Drivers/CMSIS/Include/cmsis_armcc.h
 transistor tester v1.02\usb_device.o: ../Drivers/CMSIS/Include/core_cmFunc.h
@@ -15,7 +15,7 @@ transistor tester v1.02\usb_device.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f
 transistor tester v1.02\usb_device.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h
 transistor tester v1.02\usb_device.o: ../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f1xx.h
 transistor tester v1.02\usb_device.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h
-transistor tester v1.02\usb_device.o: E:\software\MDK\ARM\ARMCC\bin\..\include\stdio.h
+transistor tester v1.02\usb_device.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 transistor tester v1.02\usb_device.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc_ex.h
 transistor tester v1.02\usb_device.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_gpio.h
 transistor tester v1.02\usb_device.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_gpio_ex.h
@@ -33,8 +33,8 @@ transistor tester v1.02\usb_device.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f
 transistor tester v1.02\usb_device.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pcd_ex.h
 transistor tester v1.02\usb_device.o: ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_def.h
 transistor tester v1.02\usb_device.o: ../Inc/usbd_conf.h
-transistor tester v1.02\usb_device.o: E:\software\MDK\ARM\ARMCC\bin\..\include\stdlib.h
-transistor tester v1.02\usb_device.o: E:\software\MDK\ARM\ARMCC\bin\..\include\string.h
+transistor tester v1.02\usb_device.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+transistor tester v1.02\usb_device.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 transistor tester v1.02\usb_device.o: ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_def.h
 transistor tester v1.02\usb_device.o: ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_core.h
 transistor tester v1.02\usb_device.o: ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ioreq.h

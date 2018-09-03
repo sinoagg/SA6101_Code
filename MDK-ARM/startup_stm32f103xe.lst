@@ -577,12 +577,20 @@ ARM Macro Assembler    Page 9
   371 0000001C                 END
               00000000 
               00000000 
-Command Line: --debug --xref --cpu=Cortex-M3 --apcs=interwork --depend="transis
-tor tester v1.02\startup_stm32f103xe.d" -o"transistor tester v1.02\startup_stm3
-2f103xe.o" -I"D:\MY  File\项目文件\SA6101\SA6101_Code-master V1.11\SA6101_Code-
-master\MDK-ARM\RTE" -IE:\software\MDK\ARM\PACK\ARM\CMSIS\4.1.0\CMSIS\Include --
-predefine="__MICROLIB SETA 1" --list=startup_stm32f103xe.lst startup_stm32f103x
-e.s
+Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M3 --apcs=interw
+ork --depend="transistor tester v1.02\startup_stm32f103xe.d" -o"transistor test
+er v1.02\startup_stm32f103xe.o" -I"E:\SINOAGG\晶体管测量仪\SA6101 Code V1.10\SA
+6101\MDK-ARM\RTE\_Transistor_Tester_V1.02" -IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.3.
+0\CMSIS\Include -IC:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include -
+-predefine="__MICROLIB SETA 1" --predefine="__UVISION_VERSION SETA 522" --prede
+
+
+
+ARM Macro Assembler    Page 10 
+
+
+fine="_RTE_ SETA 1" --predefine="STM32F10X_HD SETA 1" --list=startup_stm32f103x
+e.lst startup_stm32f103xe.s
 
 
 
@@ -1454,4 +1462,4 @@ Symbol: __main
       At line 168 in file startup_stm32f103xe.s
 Comment: __main used once
 2 symbols
-420 symbols in table
+423 symbols in table
