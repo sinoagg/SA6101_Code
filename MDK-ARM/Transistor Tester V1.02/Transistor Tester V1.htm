@@ -3,7 +3,7 @@
 <title>Static Call Graph - [Transistor Tester V1.02\Transistor Tester V1.02]</title></head>
 <body><HR>
 <H1>Static Call Graph for image Transistor Tester V1.02\Transistor Tester V1.02</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060422: Last Updated: Wed Sep 05 10:36:38 2018
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060422: Last Updated: Wed Sep 05 13:11:47 2018
 <BR><P>
 <H3>Maximum Stack Usage =        228 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -314,9 +314,9 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fadd
 </UL>
-<BR>[Called By]<UL><LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Cali_Crrent_Pos
+<BR>[Called By]<UL><LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Cali_Crrent_Pos
 <LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Cali_Crrent_Neg
-<LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OutputAdjVoltage
+<LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OutputAdjVoltage
 </UL>
 
 <P><STRONG><a name="[54]"></a>__aeabi_frsub</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, fadd.o(.text))
@@ -324,19 +324,18 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fadd
 </UL>
-<BR>[Called By]<UL><LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CommitAdjustment
+<BR>[Called By]<UL><LI><a href="#[7a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CommitAdjustment
 </UL>
 
-<P><STRONG><a name="[73]"></a>__aeabi_fmul</STRONG> (Thumb, 100 bytes, Stack size 8 bytes, fmul.o(.text))
+<P><STRONG><a name="[7c]"></a>__aeabi_fmul</STRONG> (Thumb, 100 bytes, Stack size 8 bytes, fmul.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = __aeabi_fmul
 </UL>
 <BR>[Called By]<UL><LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;M_AD7791_ReadData
-<LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Cali_Crrent_Neg
 <LI><a href="#[10a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OutputVoltageCalibration
 <LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MyPow
 <LI><a href="#[109]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OutputVoltage
-<LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OutputAdjVoltage
-<LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CommitAdjustment
+<LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OutputAdjVoltage
+<LI><a href="#[7a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CommitAdjustment
 </UL>
 
 <P><STRONG><a name="[55]"></a>__aeabi_fdiv</STRONG> (Thumb, 124 bytes, Stack size 8 bytes, fdiv.o(.text))
@@ -348,9 +347,9 @@ Global Symbols
 <LI><a href="#[10f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ZeroCrrentCalibration
 <LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CurrentRangeCalibration
 <LI><a href="#[109]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OutputVoltage
-<LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OutputAdjVoltage
+<LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OutputAdjVoltage
 <LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Do_Calculation
-<LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CommitAdjustment
+<LI><a href="#[7a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CommitAdjustment
 </UL>
 
 <P><STRONG><a name="[56]"></a>__aeabi_dadd</STRONG> (Thumb, 322 bytes, Stack size 48 bytes, dadd.o(.text))
@@ -408,7 +407,7 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_float_epilogue
 </UL>
 <BR>[Called By]<UL><LI><a href="#[109]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OutputVoltage
-<LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OutputAdjVoltage
+<LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OutputAdjVoltage
 </UL>
 
 <P><STRONG><a name="[60]"></a>__aeabi_ui2f</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, ffltui.o(.text))
@@ -432,7 +431,7 @@ Global Symbols
 
 <P><STRONG><a name="[106]"></a>__aeabi_f2uiz</STRONG> (Thumb, 40 bytes, Stack size 0 bytes, ffixui.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[109]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OutputVoltage
-<LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OutputAdjVoltage
+<LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OutputAdjVoltage
 </UL>
 
 <P><STRONG><a name="[62]"></a>__aeabi_d2uiz</STRONG> (Thumb, 50 bytes, Stack size 8 bytes, dfixui.o(.text))
@@ -467,9 +466,9 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetMonitorVoltage
 </UL>
 
-<P><STRONG><a name="[7c]"></a>__aeabi_cfrcmple</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, cfrcmple.o(.text))
+<P><STRONG><a name="[7b]"></a>__aeabi_cfrcmple</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, cfrcmple.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetMonitorVoltage
-<LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CommitAdjustment
+<LI><a href="#[7a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CommitAdjustment
 </UL>
 
 <P><STRONG><a name="[57]"></a>__aeabi_llsl</STRONG> (Thumb, 30 bytes, Stack size 0 bytes, llshl.o(.text))
@@ -549,7 +548,7 @@ Global Symbols
 <LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;AD5687R_WriteChCode
 </UL>
 <BR>[Called By]<UL><LI><a href="#[109]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OutputVoltage
-<LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OutputAdjVoltage
+<LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OutputAdjVoltage
 </UL>
 
 <P><STRONG><a name="[6e]"></a>AD7988_1_Init</STRONG> (Thumb, 108 bytes, Stack size 16 bytes, ad7988_1.o(i.AD7988_1_Init))
@@ -577,16 +576,15 @@ Global Symbols
 <P><STRONG><a name="[4]"></a>BusFault_Handler</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, stm32f1xx_it.o(i.BusFault_Handler))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f103xe.o(RESET)
 </UL>
-<P><STRONG><a name="[72]"></a>Cali_Crrent_Neg</STRONG> (Thumb, 50 bytes, Stack size 24 bytes, calibration.o(i.Cali_Crrent_Neg))
-<BR><BR>[Stack]<UL><LI>Max Depth = 44<LI>Call Chain = Cali_Crrent_Neg &rArr; __aeabi_fsub &rArr; __aeabi_fadd &rArr; _float_epilogue
+<P><STRONG><a name="[72]"></a>Cali_Crrent_Neg</STRONG> (Thumb, 36 bytes, Stack size 16 bytes, calibration.o(i.Cali_Crrent_Neg))
+<BR><BR>[Stack]<UL><LI>Max Depth = 36<LI>Call Chain = Cali_Crrent_Neg &rArr; __aeabi_fsub &rArr; __aeabi_fadd &rArr; _float_epilogue
 </UL>
 <BR>[Calls]<UL><LI><a href="#[53]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fsub
-<LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fmul
 </UL>
 <BR>[Called By]<UL><LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CurrentRangeCalibration
 </UL>
 
-<P><STRONG><a name="[74]"></a>Cali_Crrent_Pos</STRONG> (Thumb, 32 bytes, Stack size 16 bytes, calibration.o(i.Cali_Crrent_Pos))
+<P><STRONG><a name="[73]"></a>Cali_Crrent_Pos</STRONG> (Thumb, 32 bytes, Stack size 16 bytes, calibration.o(i.Cali_Crrent_Pos))
 <BR><BR>[Stack]<UL><LI>Max Depth = 36<LI>Call Chain = Cali_Crrent_Pos &rArr; __aeabi_fsub &rArr; __aeabi_fadd &rArr; _float_epilogue
 </UL>
 <BR>[Calls]<UL><LI><a href="#[53]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fsub
@@ -594,17 +592,17 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CurrentRangeCalibration
 </UL>
 
-<P><STRONG><a name="[78]"></a>ClearAllVoltage</STRONG> (Thumb, 28 bytes, Stack size 8 bytes, process_ctrl.o(i.ClearAllVoltage))
+<P><STRONG><a name="[77]"></a>ClearAllVoltage</STRONG> (Thumb, 28 bytes, Stack size 8 bytes, process_ctrl.o(i.ClearAllVoltage))
 <BR><BR>[Stack]<UL><LI>Max Depth = 112<LI>Call Chain = ClearAllVoltage &rArr; OutputAdjVoltage &rArr; AD5687R_WriteIR &rArr; AD5687R_WriteCmdCode &rArr; delay_us
 </UL>
-<BR>[Calls]<UL><LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OutputAdjVoltage
+<BR>[Calls]<UL><LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OutputAdjVoltage
 </UL>
 <BR>[Called By]<UL><LI><a href="#[10f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ZeroCrrentCalibration
 <LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CurrentRangeCalibration
 <LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EnterEndofTest
 </UL>
 
-<P><STRONG><a name="[7a]"></a>ClearRangeRelay</STRONG> (Thumb, 98 bytes, Stack size 8 bytes, relay.o(i.ClearRangeRelay))
+<P><STRONG><a name="[79]"></a>ClearRangeRelay</STRONG> (Thumb, 98 bytes, Stack size 8 bytes, relay.o(i.ClearRangeRelay))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = ClearRangeRelay
 </UL>
 <BR>[Calls]<UL><LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
@@ -612,13 +610,13 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetRangeRelay
 </UL>
 
-<P><STRONG><a name="[7b]"></a>CommitAdjustment</STRONG> (Thumb, 278 bytes, Stack size 32 bytes, calibration.o(i.CommitAdjustment))
+<P><STRONG><a name="[7a]"></a>CommitAdjustment</STRONG> (Thumb, 278 bytes, Stack size 32 bytes, calibration.o(i.CommitAdjustment))
 <BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = CommitAdjustment &rArr; MyPow &rArr; __aeabi_fmul
 </UL>
 <BR>[Calls]<UL><LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_frsub
-<LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cfrcmple
+<LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cfrcmple
 <LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MyPow
-<LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fmul
+<LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fmul
 <LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fdiv
 </UL>
 <BR>[Called By]<UL><LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
@@ -720,7 +718,7 @@ Global Symbols
 <P><STRONG><a name="[8b]"></a>Do_Calculation</STRONG> (Thumb, 230 bytes, Stack size 64 bytes, calculation.o(i.Do_Calculation))
 <BR><BR>[Stack]<UL><LI>Max Depth = 152<LI>Call Chain = Do_Calculation &rArr; __aeabi_dsub &rArr; __aeabi_dadd &rArr; _double_epilogue &rArr; _double_round
 </UL>
-<BR>[Calls]<UL><LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_Base_Stop_IT
+<BR>[Calls]<UL><LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_Base_Stop_IT
 <LI><a href="#[60]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ui2f
 <LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2d
 <LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ddiv
@@ -736,8 +734,8 @@ Global Symbols
 <P><STRONG><a name="[8c]"></a>EnterEndofTest</STRONG> (Thumb, 30 bytes, Stack size 8 bytes, main.o(i.EnterEndofTest))
 <BR><BR>[Stack]<UL><LI>Max Depth = 120<LI>Call Chain = EnterEndofTest &rArr; ClearAllVoltage &rArr; OutputAdjVoltage &rArr; AD5687R_WriteIR &rArr; AD5687R_WriteCmdCode &rArr; delay_us
 </UL>
-<BR>[Calls]<UL><LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_Base_Stop_IT
-<LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ClearAllVoltage
+<BR>[Calls]<UL><LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_Base_Stop_IT
+<LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ClearAllVoltage
 </UL>
 <BR>[Called By]<UL><LI><a href="#[108]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OutputNextVg
 <LI><a href="#[107]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OutputNextVd
@@ -802,7 +800,7 @@ Global Symbols
 <LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetMonitorRelay
 <LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ReleaseMonitorRelay
 <LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;M_AD7791_ReadData
-<LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cfrcmple
+<LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cfrcmple
 <LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2d
 <LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_d2f
 <LI><a href="#[5d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
@@ -946,7 +944,7 @@ Global Symbols
 <LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConnectSub
 <LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConnectGate
 <LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConnectDrain
-<LI><a href="#[7a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ClearRangeRelay
+<LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ClearRangeRelay
 <LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;AD5687R_WriteCmdCode
 <LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;AD5687R_WriteChCode
 <LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;AD5687R_ChangeMode
@@ -1260,15 +1258,15 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[d4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_Base_Init
 </UL>
 
-<P><STRONG><a name="[76]"></a>HAL_TIM_Base_Start_IT</STRONG> (Thumb, 30 bytes, Stack size 0 bytes, stm32f1xx_hal_tim.o(i.HAL_TIM_Base_Start_IT))
-<BR><BR>[Called By]<UL><LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ChangeTimer
+<P><STRONG><a name="[75]"></a>HAL_TIM_Base_Start_IT</STRONG> (Thumb, 30 bytes, Stack size 0 bytes, stm32f1xx_hal_tim.o(i.HAL_TIM_Base_Start_IT))
+<BR><BR>[Called By]<UL><LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ChangeTimer
 <LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 <LI><a href="#[e5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;StartNextSampling
 <LI><a href="#[e1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_PeriodElapsedCallback
 </UL>
 
-<P><STRONG><a name="[77]"></a>HAL_TIM_Base_Stop_IT</STRONG> (Thumb, 56 bytes, Stack size 0 bytes, stm32f1xx_hal_tim.o(i.HAL_TIM_Base_Stop_IT))
-<BR><BR>[Called By]<UL><LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ChangeTimer
+<P><STRONG><a name="[76]"></a>HAL_TIM_Base_Stop_IT</STRONG> (Thumb, 56 bytes, Stack size 0 bytes, stm32f1xx_hal_tim.o(i.HAL_TIM_Base_Stop_IT))
+<BR><BR>[Called By]<UL><LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ChangeTimer
 <LI><a href="#[111]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetTimerPara
 <LI><a href="#[10d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RelayCheck
 <LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Do_Calculation
@@ -1319,8 +1317,8 @@ Global Symbols
 <P><STRONG><a name="[e1]"></a>HAL_TIM_PeriodElapsedCallback</STRONG> (Thumb, 134 bytes, Stack size 8 bytes, main.o(i.HAL_TIM_PeriodElapsedCallback))
 <BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = HAL_TIM_PeriodElapsedCallback &rArr; AD7988_1_ReadData &rArr; delay_us
 </UL>
-<BR>[Calls]<UL><LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_Base_Stop_IT
-<LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_Base_Start_IT
+<BR>[Calls]<UL><LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_Base_Stop_IT
+<LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_Base_Start_IT
 <LI><a href="#[e6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;InitTestResult
 <LI><a href="#[70]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;AD7988_1_ReadData
 <LI><a href="#[e5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;StartNextSampling
@@ -1508,7 +1506,7 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 96<LI>Call Chain = M_AD7791_ReadData &rArr; M_AD7791_ReadDataReg &rArr; M_Get_AD_Data &rArr; delay_us
 </UL>
 <BR>[Calls]<UL><LI><a href="#[60]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ui2f
-<LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fmul
+<LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fmul
 <LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fdiv
 <LI><a href="#[102]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;M_AD7791_ReadDataReg
 </UL>
@@ -1570,28 +1568,28 @@ Global Symbols
 <P><STRONG><a name="[7d]"></a>MyPow</STRONG> (Thumb, 40 bytes, Stack size 24 bytes, calibration.o(i.MyPow))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = MyPow &rArr; __aeabi_fmul
 </UL>
-<BR>[Calls]<UL><LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fmul
+<BR>[Calls]<UL><LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fmul
 </UL>
 <BR>[Called By]<UL><LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Do_Calculation
-<LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CommitAdjustment
+<LI><a href="#[7a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CommitAdjustment
 </UL>
 
 <P><STRONG><a name="[1]"></a>NMI_Handler</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, stm32f1xx_it.o(i.NMI_Handler))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f103xe.o(RESET)
 </UL>
-<P><STRONG><a name="[79]"></a>OutputAdjVoltage</STRONG> (Thumb, 244 bytes, Stack size 40 bytes, process_ctrl.o(i.OutputAdjVoltage))
+<P><STRONG><a name="[78]"></a>OutputAdjVoltage</STRONG> (Thumb, 244 bytes, Stack size 40 bytes, process_ctrl.o(i.OutputAdjVoltage))
 <BR><BR>[Stack]<UL><LI>Max Depth = 104<LI>Call Chain = OutputAdjVoltage &rArr; AD5687R_WriteIR &rArr; AD5687R_WriteCmdCode &rArr; delay_us
 </UL>
 <BR>[Calls]<UL><LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_i2f
 <LI><a href="#[53]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fsub
-<LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fmul
+<LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fmul
 <LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fdiv
 <LI><a href="#[106]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2uiz
 <LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;AD5687R_WriteIR
 </UL>
 <BR>[Called By]<UL><LI><a href="#[10f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ZeroCrrentCalibration
 <LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CurrentRangeCalibration
-<LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ClearAllVoltage
+<LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ClearAllVoltage
 <LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 <LI><a href="#[108]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OutputNextVg
 <LI><a href="#[107]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OutputNextVd
@@ -1600,7 +1598,7 @@ Global Symbols
 <P><STRONG><a name="[107]"></a>OutputNextVd</STRONG> (Thumb, 242 bytes, Stack size 8 bytes, main.o(i.OutputNextVd))
 <BR><BR>[Stack]<UL><LI>Max Depth = 128<LI>Call Chain = OutputNextVd &rArr; EnterEndofTest &rArr; ClearAllVoltage &rArr; OutputAdjVoltage &rArr; AD5687R_WriteIR &rArr; AD5687R_WriteCmdCode &rArr; delay_us
 </UL>
-<BR>[Calls]<UL><LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OutputAdjVoltage
+<BR>[Calls]<UL><LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OutputAdjVoltage
 <LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EnterEndofTest
 </UL>
 <BR>[Called By]<UL><LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
@@ -1609,7 +1607,7 @@ Global Symbols
 <P><STRONG><a name="[108]"></a>OutputNextVg</STRONG> (Thumb, 242 bytes, Stack size 8 bytes, main.o(i.OutputNextVg))
 <BR><BR>[Stack]<UL><LI>Max Depth = 128<LI>Call Chain = OutputNextVg &rArr; EnterEndofTest &rArr; ClearAllVoltage &rArr; OutputAdjVoltage &rArr; AD5687R_WriteIR &rArr; AD5687R_WriteCmdCode &rArr; delay_us
 </UL>
-<BR>[Calls]<UL><LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OutputAdjVoltage
+<BR>[Calls]<UL><LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OutputAdjVoltage
 <LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EnterEndofTest
 </UL>
 <BR>[Called By]<UL><LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
@@ -1619,7 +1617,7 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 96<LI>Call Chain = OutputVoltage &rArr; AD5687R_WriteIR &rArr; AD5687R_WriteCmdCode &rArr; delay_us
 </UL>
 <BR>[Calls]<UL><LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_i2f
-<LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fmul
+<LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fmul
 <LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fdiv
 <LI><a href="#[106]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2uiz
 <LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;AD5687R_WriteIR
@@ -1634,7 +1632,7 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = RelayCheck &rArr; HAL_Delay
 </UL>
 <BR>[Calls]<UL><LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_Delay
-<LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_Base_Stop_IT
+<LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_Base_Stop_IT
 <LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetRangeRelay
 </UL>
 <BR>[Called By]<UL><LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
@@ -1674,7 +1672,7 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = SetRangeRelay &rArr; ClearRangeRelay
 </UL>
 <BR>[Calls]<UL><LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
-<LI><a href="#[7a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ClearRangeRelay
+<LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ClearRangeRelay
 </UL>
 <BR>[Called By]<UL><LI><a href="#[10f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ZeroCrrentCalibration
 <LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CurrentRangeCalibration
@@ -1685,7 +1683,7 @@ Global Symbols
 <P><STRONG><a name="[110]"></a>SetTimerAction</STRONG> (Thumb, 90 bytes, Stack size 8 bytes, process_ctrl.o(i.SetTimerAction))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = SetTimerAction &rArr; ChangeTimer
 </UL>
-<BR>[Calls]<UL><LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ChangeTimer
+<BR>[Calls]<UL><LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ChangeTimer
 </UL>
 <BR>[Called By]<UL><LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
@@ -1693,7 +1691,7 @@ Global Symbols
 <P><STRONG><a name="[111]"></a>SetTimerPara</STRONG> (Thumb, 52 bytes, Stack size 16 bytes, process_ctrl.o(i.SetTimerPara))
 <BR><BR>[Stack]<UL><LI>Max Depth = 160<LI>Call Chain = SetTimerPara &rArr; MX_TIM3_Init &rArr; __aeabi_dsub &rArr; __aeabi_dadd &rArr; _double_epilogue &rArr; _double_round
 </UL>
-<BR>[Calls]<UL><LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_Base_Stop_IT
+<BR>[Calls]<UL><LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_Base_Stop_IT
 <LI><a href="#[fd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_TIM4_Init
 <LI><a href="#[fc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_TIM3_Init
 <LI><a href="#[fa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_TIM2_Init
@@ -1704,7 +1702,7 @@ Global Symbols
 <P><STRONG><a name="[e5]"></a>StartNextSampling</STRONG> (Thumb, 18 bytes, Stack size 8 bytes, main.o(i.StartNextSampling))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = StartNextSampling
 </UL>
-<BR>[Calls]<UL><LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_Base_Start_IT
+<BR>[Calls]<UL><LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_Base_Start_IT
 </UL>
 <BR>[Called By]<UL><LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 <LI><a href="#[e1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_PeriodElapsedCallback
@@ -2122,14 +2120,14 @@ Global Symbols
 <LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_Delay
 <LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
 <LI><a href="#[135]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_TogglePin
-<LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_Base_Stop_IT
-<LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_Base_Start_IT
+<LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_Base_Stop_IT
+<LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_Base_Start_IT
 <LI><a href="#[139]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prepareTxData
 <LI><a href="#[111]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetTimerPara
 <LI><a href="#[110]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetTimerAction
 <LI><a href="#[10e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RunCalibration
 <LI><a href="#[10d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RelayCheck
-<LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OutputAdjVoltage
+<LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OutputAdjVoltage
 <LI><a href="#[e6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;InitTestResult
 <LI><a href="#[f9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;InitTestPara
 <LI><a href="#[f2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Hardware_Init
@@ -2139,7 +2137,7 @@ Global Symbols
 <LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Do_Calculation
 <LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DisconnectAllOutput
 <LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConnectAllOutput
-<LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CommitAdjustment
+<LI><a href="#[7a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CommitAdjustment
 <LI><a href="#[e5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;StartNextSampling
 <LI><a href="#[108]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OutputNextVg
 <LI><a href="#[107]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OutputNextVd
@@ -2340,11 +2338,11 @@ Local Symbols
 <BR>[Called By]<UL><LI><a href="#[f2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Hardware_Init
 </UL>
 
-<P><STRONG><a name="[75]"></a>ChangeTimer</STRONG> (Thumb, 44 bytes, Stack size 16 bytes, process_ctrl.o(i.ChangeTimer))
+<P><STRONG><a name="[74]"></a>ChangeTimer</STRONG> (Thumb, 44 bytes, Stack size 16 bytes, process_ctrl.o(i.ChangeTimer))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = ChangeTimer
 </UL>
-<BR>[Calls]<UL><LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_Base_Stop_IT
-<LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_Base_Start_IT
+<BR>[Calls]<UL><LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_Base_Stop_IT
+<LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_Base_Start_IT
 </UL>
 <BR>[Called By]<UL><LI><a href="#[110]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetTimerAction
 </UL>
@@ -2354,7 +2352,7 @@ Local Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_Delay
 <LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetRangeRelay
-<LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Cali_Crrent_Pos
+<LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Cali_Crrent_Pos
 <LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Cali_Crrent_Neg
 <LI><a href="#[60]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ui2f
 <LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2d
@@ -2364,10 +2362,10 @@ Local Symbols
 <LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fadd
 <LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dsub
 <LI><a href="#[5d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
-<LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OutputAdjVoltage
+<LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OutputAdjVoltage
 <LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DisconnectAllOutput
 <LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ConnectAllOutput
-<LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ClearAllVoltage
+<LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ClearAllVoltage
 <LI><a href="#[70]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;AD7988_1_ReadData
 </UL>
 <BR>[Called By]<UL><LI><a href="#[10e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RunCalibration
@@ -2378,7 +2376,7 @@ Local Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_Delay
 <LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetMonitorVoltage
-<LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fmul
+<LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fmul
 <LI><a href="#[109]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OutputVoltage
 </UL>
 <BR>[Called By]<UL><LI><a href="#[10e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RunCalibration
@@ -2397,8 +2395,8 @@ Local Symbols
 <LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fadd
 <LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dsub
 <LI><a href="#[5d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
-<LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OutputAdjVoltage
-<LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ClearAllVoltage
+<LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OutputAdjVoltage
+<LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ClearAllVoltage
 <LI><a href="#[70]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;AD7988_1_ReadData
 </UL>
 <BR>[Called By]<UL><LI><a href="#[10e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RunCalibration
