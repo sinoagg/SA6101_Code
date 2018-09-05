@@ -24,7 +24,11 @@ enum MsgType msgType=MSG_TYPE_NULL;
 enum ADC_Status ADC_status=ADC_BUSY;
 TestPara_TypeDef TestPara;
 TestResult_TypeDef TestResult;
- 
+
+void OutputNextVd(void);
+void OutputNextVg(void);
+void StartNextSampling(void);
+
 uint8_t Uart1RxBuf[512]={0};                                            //½ÓÊÕÉÏÎ»»úÊı¾İ»º³åÊı×é
 uint8_t Uart1TxBuf[512]={0};                                            //·¢ËÍ¸øÉÏÎ»»úÊı¾İ»º³åÊı×é
 uint8_t RxComplete=0;
@@ -34,12 +38,12 @@ uint8_t firstDataReady=0;										//µÚÒ»¸öÊı¾İ¾ÍÎ»£¬Ö»ÓĞµÚÒ»¸öÊı¾İ¾ÍÎ»ºóÉ¨ÃèµçÑ
 
 int main(void)
 {
-	uint8_t resultNum=0;																									//Íê³ÉµÄ²âÁ¿´ÎÊı
+	uint8_t* pTxBuf=Uart1TxBuf;																									//Íê³ÉµÄ²âÁ¿´ÎÊı
 	Hardware_Init();																											//³õÊ¼»¯Ó²¼ş
 	//InitUSBVar();																												//³õÊ¼»¯USBÍ¨ĞÅ½á¹¹²ÎÊı																								//³õÊ¼»¯485ÏûÏ¢
 	InitTestPara(&TestPara);																							//³õÊ¼»¯²âÊÔ½á¹¹Ìå²ÎÊı 																											//½«Drain Sub Gate¼ÌµçÆ÷Á¬½Ó																										
-
-	HAL_UART_Receive_DMA(&huart1, Uart1RxBuf, 32);					//³ÖĞø½ÓÊÕ´®¿Ú1 RS485Êı¾İ
+	HAL_UART_Receive_DMA(&huart1, Uart1RxBuf, UART_RX_LEN);					//³ÖĞø½ÓÊÕ´®¿Ú1 RS485Êı¾İ
+	
 	while (1)
   {	
 		if(msgType!=MSG_TYPE_NULL)																			//Èç¹û485×ÜÏßÊÕµ½ĞÅÏ¢
@@ -48,6 +52,7 @@ int main(void)
 			if(msgType==MSG_TYPE_SETTING)																	//Èç¹ûÊÇÉèÖÃÃüÁî
 			{
 				GetTestPara(&TestPara, &Relay, Uart1RxBuf);									//½ÓÊÕ²¢×ª»¯²âÊÔ²ÎÊı
+				//GetRelayPara(&Relay);»ñÈ¡Á¿³Ìµ²Î»·ÅÔÚÔËĞĞÊ±¼õÉÙµ÷ÕûÊ±¼ä
 				OutputAdjVoltage(GATE, TestPara.VgNow);												//Á¢¼´Êä³öµçÑ¹ÔçµãÊ¹µçÑ¹ÎÈ¶¨
 				OutputAdjVoltage(DRAIN, TestPara.VdNow);
 			}
@@ -55,31 +60,26 @@ int main(void)
 			{
 				TestPara.testCmd=CMD_START;	
 				TestResult.endOfTest=0;
-				resultNum=0;																													//Çå¿Õ´ÓÁã¿ªÊ¼
+				pTxBuf=Uart1TxBuf;																													//Çå¿Õ´ÓÁã¿ªÊ¼
 				firstDataReady=0;
-				InitTestResult(&TestResult);
+				ADC_status=ADC_BUSY;
 				GetRelayPara(&Relay);
 				ConnectAllOutput();	
+				InitTestResult(&TestResult);
 				SetTimerPara(&TestPara);																							//ÉèÖÃ¶¨Ê±Æ÷²ÎÊı	
 				SetTimerAction(&TestPara);													      						//¿ªÆô¶¨Ê±Æ÷
 			}
 			else if(msgType==MSG_TYPE_STOP)																					//Èç¹ûÊÇÍ£Ö¹ÃüÁî
 			{
 				TestPara.testCmd=CMD_STOP;
-				ADC_status=ADC_BUSY;	
-				SetTimerAction(&TestPara);																						//Í£Ö¹¶¨Ê±Æ÷
+				SetTimerAction(&TestPara);
+				ADC_status=ADC_BUSY;										//Í£Ö¹¶¨Ê±Æ÷
 				DisconnectAllOutput();
 			}
-			else if(msgType==MSG_TYPE_QUERY)																					//Èç¹ûÊÇ²éÑ¯ÃüÁî
-			{
-				if(resultNum>0)
-				{
-						Uart1TxBuf[0]=DEV_ADDR;                        												//Éè±¸µØÖ·	
-						HAL_GPIO_WritePin(RS485_RE_GPIO_Port, RS485_RE_Pin, GPIO_PIN_SET);		//Ê¹ÄÜ·¢ËÍ
-						HAL_UART_Transmit_DMA(&huart1, Uart1TxBuf, resultNum*UART_TX_LEN);
-						resultNum=0;																													//ËùÓĞ½á¹ûÒÑ·¢ËÍ£¬¹éÁã
-				}
-			}
+			//else if(msgType==MSG_TYPE_QUERY)																					//Èç¹ûÊÇ²éÑ¯ÃüÁî
+			//{
+				
+			//}
 			else if(msgType==MSG_TYPE_REPORT_ID)
 			{
 				Uart1TxBuf[0]=DEV_ADDR;
@@ -97,64 +97,63 @@ int main(void)
 			}
 			msgType=MSG_TYPE_NULL;
 		}
-		
-		if(TxComplete==1)
-		{
-			TxComplete=0;
-			//HAL_Delay(2);			//ËäÈ»µ¥Æ¬»ú·¢ÍêÁË£¬µ«ÊÇ485Ğ¾Æ¬²¢Ã»ÓĞ·¢Íê
-			HAL_GPIO_WritePin(RS485_RE_GPIO_Port, RS485_RE_Pin, GPIO_PIN_RESET);	//Ê¹ÄÜ485½ÓÊÕ
-		}
 		if(RxComplete==1)
 		{
-			HAL_UART_Receive_DMA(&huart1, Uart1RxBuf, 512);					//³ÖĞø½ÓÊÕ´®¿Ú1 RS485Êı¾İ
 			RxComplete=0;
-			if(Uart1RxBuf[0]==DEV_ADDR||Uart1RxBuf[0]==0x00)			//Èç¹ûÊÇÉè±¸µØÖ·»òÕßÊÇ¹ã²¥µØÖ·
+			msgType=(enum MsgType)GetMsgType(Uart1RxBuf);
+			if(msgType==MSG_TYPE_QUERY)
 			{
-				uint8_t xorCheck=0;
-				for(uint8_t j=0;j<UART_RX_LEN-1;j++)                //½«½ÓÊÕµ½µÄÊı¾İ°´ÕÕĞ­Òé½øĞĞĞ£Ñé
+				if((pTxBuf!=Uart1TxBuf)&&(TxComplete==1))
 				{
-					xorCheck^=Uart1RxBuf[j];
-				}
-				if(xorCheck==Uart1RxBuf[UART_RX_LEN-1])
-				{
-						msgType=(enum MsgType)Uart1RxBuf[1];
+					TxComplete=0;	//±íÊ¾DMAÓĞÊı¾İÔÚ·¢ËÍ
+					Uart1TxBuf[0]=DEV_ADDR;                        												//Éè±¸µØÖ·	
+					HAL_GPIO_WritePin(RS485_RE_GPIO_Port, RS485_RE_Pin, GPIO_PIN_SET);		//Ê¹ÄÜ·¢ËÍ
+					HAL_UART_Transmit_DMA(&huart1, Uart1TxBuf, pTxBuf-Uart1TxBuf);
+					HAL_Delay(2);			//±ØĞëÑÓ³Ù2ms£¬485·¢ËÍËÙ¶ÈÂı£¬·ñÔòÔì³ÉÊı¾İ´íÎ»																										//ËùÓĞ½á¹ûÒÑ·¢ËÍ£¬¹éÁã
+					pTxBuf=Uart1TxBuf;
 				}
 			}
+			HAL_UART_Receive_DMA(&huart1, Uart1RxBuf, UART_RX_LEN+1);		//´Ë´¦±ØĞëÔö¼Ó½ÓÊÕ³¤¶È	
 		}
 		//Êı¾İ²É¼¯²¿·Ö
-		
 		if(ADC_status==ADC_READY)																								//Èç¹ûADC¶¨Ê±Æ÷²Éµ½ÓĞĞ§Êı¾İ	
-		{
-			ADC_status=ADC_BUSY;																									//Çå³ı±êÖ¾Î»
-		 if(RelayCheck(&Relay, TestResult.I_sample)==0)												//µ±ÕÒµ½ºÏÊÊµµÎ»
+		{																								//Çå³ı±êÖ¾Î»
+			if(RelayCheck(TestPara.testMode, &Relay, TestResult.I_sample)==0)												//µ±ÕÒµ½ºÏÊÊµµÎ»
 			{
 				if(Do_Calculation(&TestPara, &TestResult, &Relay)==0)							//Èç¹ûÔÚ²âÊÔ¹ı³ÌÖĞ²¢ÇÒÓĞÕıÈ·Êı¾İ
 				{
 					HAL_TIM_Base_Stop_IT(&htim2);															//µ±Ç°Êı¾İ»ñÈ¡Íê±Ï£¬Í£Ö¹²ÉÑù¶¨Ê±Æ÷
-					//Ö»ÓĞÍ£Ö¹²É¼¯Ê±²ÅÏìÓ¦´®¿ÚÖĞ¶Ï
-					HAL_NVIC_EnableIRQ(USART1_IRQn);
 					HAL_GPIO_TogglePin(LED1_GPIO_Port, LED1_Pin);
-					Relay.rangeChangeTimes=0;																					//×Ô¶¯»»µ²´ÎÊıÇåÁã
+					Relay.rangeChangeTimes=0;																	//×Ô¶¯»»µ²´ÎÊıÇåÁã
 					TestResult.I_avg.numFloat=CommitAdjustment(TestResult.I_avg.numFloat, &Relay);	//¶Ô²É¼¯µ½µÄµçÁ÷½øĞĞÊı¾İ´¦Àí
-					//TestResult.currentResultValid=1;
 					//TestResult.test_ADC_DrainVol.numFloat=GetMonitorVoltage(&hMonitorCH_Drain, 20);  				//ÉÏ´«¼à¿Øµ½µÄÂ©¼«µçÑ¹
 					//TestResult.test_ADC_GateVol.numFloat=GetMonitorVoltage(&hMonitorCH_Gate, 20);   				//ÉÏ´«¼à¿Øµ½µÄÕ¤¼«µçÑ¹	
-					if(quietTimeTick==-1 && resultNum<10)				//·ÀÖ¹Òç³ö
+					if((quietTimeTick==-1) && (pTxBuf-Uart1TxBuf<500))				//·ÀÖ¹Òç³ö
 					{
-						prepareTxData(&TestPara, &TestResult, Uart1TxBuf+resultNum*UART_TX_LEN);//½«·¢ËÍÊı×é¿ÕÓàµÄµÚÒ»¸öÎ»ÖÃÖ¸Õë´«µİ
-						resultNum++;
+						pTxBuf=prepareTxData(&TestPara, &TestResult, pTxBuf);//½«·¢ËÍÊı×é¿ÕÓàµÄµÚÒ»¸öÎ»ÖÃÖ¸Õë´«µİ
 						firstDataReady=1;
+						InitTestResult(&TestResult);
+						if(TestPara.testMode==SWEEP_DRAIN_VOL||TestPara.testMode==SWEEP_IV)
+							OutputNextVd();
+						else if(TestPara.testMode==SWEEP_GATE_VOL)
+							OutputNextVg();
 					}
-					InitTestResult(&TestResult);
+					else
+						InitTestResult(&TestResult);
 				}
 			}
 			else
 			{
-				ADC_status=ADC_BUSY;
 				InitTestResult(&TestResult);											//»»µ²ĞèÒªÇå¿Õ²âÁ¿½á¹û
-				HAL_TIM_Base_Start_IT(&htim2);										//ÔÚrelay»»µ²Ê±ÒÑ¾­Í£Ö¹¼Ä´æÆ÷ÁË£¬ĞèÒªÔÚÕâÀïÖØĞÂ´ò¿ª
+				if(TestPara.testMode==SWEEP_DRAIN_VOL||TestPara.testMode==SWEEP_GATE_VOL||TestPara.testMode==SWEEP_IV)
+				{
+					htim3.Instance->CNT=0;
+					HAL_TIM_Base_Start_IT(&htim3);
+				}
+				StartNextSampling();
 			}
-		}
+			ADC_status=ADC_BUSY;	
+		}	
 	}		
 }
 
@@ -163,16 +162,18 @@ int main(void)
 void EnterEndofTest(void)
 {
 	HAL_TIM_Base_Stop_IT(&htim3);																		//DACÊä³öÊı¾İÖĞ¶Ï¹Ø±Õ		
-	HAL_TIM_Base_Stop_IT(&htim2);	
+	HAL_TIM_Base_Stop_IT(&htim2);
+	ADC_status=ADC_BUSY;										//Èç¹û²»×ö´¦ÀíµÄ»°¿ÉÄÜÈÔÈ»ÊÇready×´Ì¬	
 	TestPara.testStatus=OFF;
-	//ClearAllVoltage();			Disconnect();																				//Êä³öµçÑ¹ÇåÁã
+	ClearAllVoltage();			//Disconnect();																				//Êä³öµçÑ¹ÇåÁã
 }
 
 void StartNextSampling(void)
 {
-	delay_us(2);											//ÓëTIM3µÄ¿ªÊ¼¼ÆÊ±Ê±¼äÀ­¿ª
+	//delay_us(2);											//ÓëTIM3µÄ¿ªÊ¼¼ÆÊ±Ê±¼äÀ­¿ª
 	htim2.Instance->CNT=0;						//¼ÆÊıÆ÷ÇåÁã
-	HAL_NVIC_DisableIRQ(USART1_IRQn);	//²É¼¯¿ªÊ¼ºóÍ£Ö¹ÏìÓ¦´®¿ÚÖĞ¶Ï		
+	//HAL_NVIC_DisableIRQ(USART1_IRQn);	//²É¼¯¿ªÊ¼ºóÍ£Ö¹ÏìÓ¦´®¿ÚÖĞ¶Ï		
+	//HAL_UART_AbortReceive(&huart1);
 	HAL_TIM_Base_Start_IT(&htim2);		//Êä³öÒ»´Î²Å¿ªÊ¼AD²É¼¯µÄÖĞ¶Ï
 		
 }
@@ -187,7 +188,6 @@ void OutputNextVd(void)		//return value endOfTest
 		else
 		{
 			OutputAdjVoltage(DRAIN, TestPara.VdNow);//Êä³öĞÂµÄÂ©¼«µçÑ¹
-			StartNextSampling();								 //¿ªÊ¼AD²É¼¯µÄÖĞ¶Ï
 		}
 	
 		if(TestPara.VdNow+abs(TestPara.VdStep)>TestPara.VdEnd) TestResult.endOfTest=1;
@@ -200,7 +200,6 @@ void OutputNextVd(void)		//return value endOfTest
 			else
 			{
 				OutputAdjVoltage(DRAIN, TestPara.VdNow);	//Êä³öĞÂµÄÂ©¼«µçÑ¹
-				StartNextSampling();									//¿ªÊ¼AD²É¼¯µÄÖĞ¶Ï
 			}
 		if(TestPara.VdNow-abs(TestPara.VdStep)<TestPara.VdEnd) TestResult.endOfTest=1;																											
 	}
@@ -216,7 +215,6 @@ void OutputNextVg(void)		//return value endOfTest
 		else
 		{
 			OutputAdjVoltage(GATE, TestPara.VgNow);//Êä³öĞÂµÄÕ¤¼«µçÑ¹
-			StartNextSampling();								 //¿ªÊ¼AD²É¼¯µÄÖĞ¶Ï
 		}
 	
 		if(TestPara.VgNow+abs(TestPara.VgStep)>TestPara.VgEnd) TestResult.endOfTest=1;
@@ -229,7 +227,6 @@ void OutputNextVg(void)		//return value endOfTest
 			else
 			{
 				OutputAdjVoltage(GATE, TestPara.VgNow);	//Êä³öĞÂµÄÕ¤¼«µçÑ¹
-				StartNextSampling();									//¿ªÊ¼AD²É¼¯µÄÖĞ¶Ï
 			}
 		if(TestPara.VgNow-abs(TestPara.VgStep)<TestPara.VgEnd) TestResult.endOfTest=1;																											
 	}
@@ -245,25 +242,15 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
     
 		if (htim->Instance == htim2.Instance)					//ADC¶¨Ê±Æ÷
     {
-				
-				TestResult.I_sample=AD7988_1_ReadData(&hAD7988_11);//ADC²É¼¯Êı¾İ
-				ADC_status=ADC_READY;
+				if(ADC_status==ADC_BUSY)//²»¹ÜÊ²Ã´Çé¿ö£¬¾ùĞè²É¼¯µçÑ¹ºÍµçÁ÷
+				{
+					TestResult.I_sample=AD7988_1_ReadData(&hAD7988_11);//ADC²É¼¯Êı¾İ
+					ADC_status=ADC_READY;
+				}
     }
 	  else if (htim->Instance == htim3.Instance)		//DAC¶¨Ê±Æ÷
 		{
-			//TestResult.currentResultValid=0;
-			if(TestPara.testMode==SWEEP_DRAIN_VOL||TestPara.testMode==SWEEP_IV)
-			{
-				OutputNextVd();	
-			}
-			else if(TestPara.testMode==SWEEP_GATE_VOL)
-			{
-				OutputNextVg();
-			}
-			else if(TestPara.testMode==NO_SWEEP_IT||TestPara.testMode==NO_SWEEP_RT||TestPara.testMode==ID_T)
-			{
 				StartNextSampling();
-			}
 		}
 		else if (htim->Instance == htim4.Instance)		//DAC¶¨Ê±Æ÷
 		{

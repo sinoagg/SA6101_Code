@@ -15,6 +15,7 @@
 #define SUB 3
 
 #define DEV_ADDR 0x01																										//此设备485总线地址，同总线产品地址不能相同
+#define BROCST_ADDR 0x00
 #define UART_RX_LEN 30																									//上位机配置数据长度
 #define UART_TX_LEN 20																									//向上位机传输数据长度
 
@@ -43,7 +44,7 @@ void SetTimerPara(TestPara_TypeDef* pTestPara);
 void SetTimerAction(TestPara_TypeDef* pTestPara);
 static void ChangeTimer(TestPara_TypeDef* pTestPara, uint8_t TIM_ONOFF);
 
-void prepareTxData(TestPara_TypeDef* pTestPara, TestResult_TypeDef* pTestResult, uint8_t* pUartRxBuf);
-
+uint8_t* prepareTxData(TestPara_TypeDef* pTestPara, TestResult_TypeDef* pTestResult, uint8_t* pUartRxBuf);
+uint8_t GetMsgType(uint8_t *UartRxBuf);
 #endif 
 

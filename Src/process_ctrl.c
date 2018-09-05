@@ -10,7 +10,7 @@ void InitTestPara(TestPara_TypeDef* pTestPara)
 {
 	pTestPara->testStatus=OFF;																														//目前的测试状态，清空，准备接收USB命令
 	
-	#ifdef MANUAL_ADJUSTMENT_1
+	#ifdef MANUAL_ADJUSTMENT
 		BOARD_INDEX=1;
 		Adj_OutputOffset[GATE].numFloat=-9.7;                 //-1号机箱数据
 		Adj_OutputOffset[SOURCE].numFloat=0;
@@ -77,7 +77,6 @@ void InitTestPara(TestPara_TypeDef* pTestPara)
 	#endif
 	
 }
-
 
 void InitTestResult(TestResult_TypeDef* pTestResult)
 {
@@ -230,28 +229,47 @@ static void ChangeTimer(TestPara_TypeDef* pTestPara, uint8_t TIM_ONOFF)
 	}
 }
 
-void prepareTxData(TestPara_TypeDef* pTestPara, TestResult_TypeDef* pTestResult, uint8_t* pUartRxBuf)
+uint8_t* prepareTxData(TestPara_TypeDef* pTestPara, TestResult_TypeDef* pTestResult, uint8_t* pUartTxBuf)
 {
 	uint8_t xorCheck=0;
-	*pUartRxBuf=DEV_ADDR;
-	*(pUartRxBuf+1)=pTestResult->endOfTest;
-	*(pUartRxBuf+2)=(uint8_t)(pTestPara->VdNow>>8);
-	*(pUartRxBuf+3)=(uint8_t)(pTestPara->VdNow&0xFF);
-	*(pUartRxBuf+4)=(uint8_t)(pTestPara->VgNow>>8);
-	*(pUartRxBuf+5)=(uint8_t)(pTestPara->VgNow&0xFF);
-	*(pUartRxBuf+6)=pTestResult->I_avg.numUchar[3];																		
-	*(pUartRxBuf+7)=pTestResult->I_avg.numUchar[2];																		
-	*(pUartRxBuf+8)=pTestResult->I_avg.numUchar[1];																	
-	*(pUartRxBuf+9)=pTestResult->I_avg.numUchar[0];																	
-	*(pUartRxBuf+18)=Relay.rangeNow;
+	*pUartTxBuf=DEV_ADDR;
+	*(pUartTxBuf+1)=pTestResult->endOfTest;
+	*(pUartTxBuf+2)=(uint8_t)(pTestPara->VdNow>>8);
+	*(pUartTxBuf+3)=(uint8_t)(pTestPara->VdNow&0xFF);
+	*(pUartTxBuf+4)=(uint8_t)(pTestPara->VgNow>>8);
+	*(pUartTxBuf+5)=(uint8_t)(pTestPara->VgNow&0xFF);
+	*(pUartTxBuf+6)=pTestResult->I_avg.numUchar[3];																		
+	*(pUartTxBuf+7)=pTestResult->I_avg.numUchar[2];																		
+	*(pUartTxBuf+8)=pTestResult->I_avg.numUchar[1];																	
+	*(pUartTxBuf+9)=pTestResult->I_avg.numUchar[0];																	
+	*(pUartTxBuf+18)=Relay.rangeNow;
 	for(uint8_t j=0;j<UART_TX_LEN-1;j++)                //将接收到的数据按照协议进行校验
 	{
-		xorCheck^=*(pUartRxBuf+j);
+		xorCheck^=*(pUartTxBuf+j);
 	}
-	*(pUartRxBuf+19)=xorCheck;
+	*(pUartTxBuf+19)=xorCheck;
+	return (pUartTxBuf+20);
 }
 
-
+uint8_t GetMsgType(uint8_t *UartRxBuf)
+{
+	if(UartRxBuf[0]==DEV_ADDR||UartRxBuf[0]==BROCST_ADDR)			//如果是设备地址或者是广播地址
+	{
+		uint8_t xorCheck=0;
+		for(uint8_t j=0;j<UART_RX_LEN-1;j++)                //将接收到的数据按照协议进行校验
+		{
+			xorCheck^=UartRxBuf[j];
+		}
+		if(xorCheck==UartRxBuf[UART_RX_LEN-1])
+		{
+				return UartRxBuf[1];
+		}
+		else 
+			return (uint8_t)MSG_TYPE_NULL;
+	}
+	else 
+		return (uint8_t)MSG_TYPE_NULL;
+}
 
 
 

@@ -48,7 +48,7 @@ void GetRelayPara(RelayTypeDef* pRelay);
 void SetMonitorRelay(int8_t index);  						//设置监控端继电器
 void ReleaseMonitorRelay(int8_t index); 				//释放监控端继电器
 
-uint8_t RelayCheck(RelayTypeDef* pRelay, uint16_t originADC_Val);//检查是否需要调整继电器
+uint8_t RelayCheck(enum TestMode testMode, RelayTypeDef* pRelay, uint16_t originADC_Val);//检查是否需要调整继电器
 
 void ConnectDrain(void);
 void DisconnectDrain(void);

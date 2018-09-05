@@ -317,8 +317,8 @@ void USART1_IRQHandler(void)
 			huart1.State = HAL_UART_STATE_READY;
 		}
 		TxComplete=1;
+		HAL_GPIO_WritePin(RS485_RE_GPIO_Port, RS485_RE_Pin, GPIO_PIN_RESET);
 	}
-	
 	
 	tmp_flag = __HAL_UART_GET_FLAG(&huart1, UART_FLAG_IDLE);
   tmp_it_source = __HAL_UART_GET_IT_SOURCE(&huart1, UART_IT_IDLE);

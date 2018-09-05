@@ -171,20 +171,19 @@ static void CurrentRangeCalibration(void)
 //校准正电流
 void Cali_Crrent_Pos(FloatUnion* arrary,float temp,uint8_t index)
 {
-	(*(arrary+index-1)).numFloat=(temp-Adj_RelayOffset[index-1].numFloat)/1;
+	(*(arrary+index-1)).numFloat=(temp-Adj_RelayOffset[index-1].numFloat);
 }
 //校准负电流
 void Cali_Crrent_Neg(FloatUnion* arrary,float temp,uint8_t index)
 {
-	(*(arrary+index-1)).numFloat=(temp*1000-Adj_RelayOffset[index-1].numFloat)/(1);
+	(*(arrary+index-1)).numFloat=-(temp*1000-Adj_RelayOffset[index-1].numFloat);
 }
 void RunCalibration(uint8_t* UartRxBuf)
 {
 	switch(UartRxBuf[2])
 	{
 		case OUTPUT_VOL_CALIBRATION:
-			OutputVoltageCalibration();
-				
+			OutputVoltageCalibration();	
 			break;
 		case ZERO_CURRENT_CALIBRATION:
 			ZeroCrrentCalibration();

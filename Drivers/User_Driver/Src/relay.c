@@ -128,7 +128,7 @@ void SetRangeRelay(uint8_t range_select)       //设置源漏电流放大范围
 /*检查继电器档位是否正确																					*/
 /*返回值： 0 为正确，1为换档																			*/
 /******************************************************************/
-uint8_t RelayCheck(RelayTypeDef* pRelay, uint16_t originADC_Val)
+uint8_t RelayCheck(enum TestMode testMode, RelayTypeDef* pRelay, uint16_t originADC_Val)
 {
 	if(Relay.rangeMode!=RELAY_RANGE_AUTO)
 		return 0;
@@ -136,6 +136,10 @@ uint8_t RelayCheck(RelayTypeDef* pRelay, uint16_t originADC_Val)
 	{
 		if((pRelay->rangeChangeTimes>9) && (pRelay->tempMaxRange>pRelay->tempMinRange))					//如果换挡次数多于9次,将最大挡位自动降低一档
 		{
+			if(testMode==SWEEP_DRAIN_VOL||testMode==SWEEP_GATE_VOL||testMode==SWEEP_IV)
+					HAL_TIM_Base_Stop_IT(&htim3);
+				HAL_TIM_Base_Stop_IT(&htim2);
+			
 			pRelay->tempMaxRange--;
 			pRelay->rangeNow=pRelay->tempMaxRange;
 			SetRangeRelay(pRelay->rangeNow);
@@ -146,7 +150,10 @@ uint8_t RelayCheck(RelayTypeDef* pRelay, uint16_t originADC_Val)
 		{
 			if(pRelay->rangeNow>pRelay->tempMinRange)																	//如果档位在1档以上，仍然可以降档
 			{
-				HAL_TIM_Base_Stop_IT(&htim2);																						//换挡前停止继续采样，否则也是无用数据，而且会造成继续换挡，以至于找不到合适挡位		
+				if(testMode==SWEEP_DRAIN_VOL||testMode==SWEEP_GATE_VOL||testMode==SWEEP_IV)
+					HAL_TIM_Base_Stop_IT(&htim3);
+				HAL_TIM_Base_Stop_IT(&htim2);
+				
 				pRelay->rangeNow--;
 				SetRangeRelay(pRelay->rangeNow);
 				pRelay->rangeChangeTimes++;
@@ -160,6 +167,9 @@ uint8_t RelayCheck(RelayTypeDef* pRelay, uint16_t originADC_Val)
 		{
 			if(pRelay->rangeNow<pRelay->tempMaxRange)							//如果档位在9档以下，仍然可以升档
 			{
+				if(testMode==SWEEP_DRAIN_VOL||testMode==SWEEP_GATE_VOL||testMode==SWEEP_IV)
+					HAL_TIM_Base_Stop_IT(&htim3);
+				HAL_TIM_Base_Stop_IT(&htim2);
 				pRelay->rangeNow++;
 				SetRangeRelay(pRelay->rangeNow);
 				pRelay->rangeChangeTimes++;
